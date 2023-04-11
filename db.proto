@@ -1,0 +1,18 @@
+syntax = "proto3";
+option go_package = "./db";
+package db_service;
+
+message DatabaseRequest {
+  string name = 1;
+  string connection_string = 2;
+  string query = 3;
+}
+
+message DatabaseResponse {
+  repeated string data = 1;
+  string error_message = 2;
+}
+
+service DatabaseService {
+  rpc GetData(DatabaseRequest) returns (DatabaseResponse) {}
+}
